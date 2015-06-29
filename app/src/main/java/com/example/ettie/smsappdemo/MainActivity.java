@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
             String smsBody = extras.getString("smsBody");
 
             textView.setText("SMS sender: " + senderNumber +
-                "\nMessage: " + smsBody);
+                    "\nMessage: " + smsBody);
         }
     }
 
