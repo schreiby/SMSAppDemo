@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +13,17 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView textView = (TextView)findViewById(R.id.textView1);
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            String senderNumber = extras.getString("senderNumber");
+            String smsBody = extras.getString("smsBody");
+
+            textView.setText("SMS sender: " + senderNumber +
+                "\nMessage: " + smsBody);
+        }
     }
 
     @Override

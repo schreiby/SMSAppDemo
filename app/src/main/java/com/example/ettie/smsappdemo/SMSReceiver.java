@@ -41,12 +41,14 @@ public class SMSReceiver extends BroadcastReceiver{
                 msgBody += messages[i].getMessageBody();
             }
 
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(senderNumber, null, "This is an auto reply SMS.", null, null);
+            /*SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(senderNumber, null, "This is an auto reply SMS.", null, null);*/
 
-            Toast.makeText(context, "SMS received from: " +
-                senderNumber + "\nSMS content: " +
-                msgBody, Toast.LENGTH_LONG).show();
+            Intent i = new Intent(context, MainActivity.class);
+            i.putExtra("senderNumber", senderNumber);
+            i.putExtra("smsBody", msgBody);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
         }
     }
 }
